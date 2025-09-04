@@ -4,238 +4,206 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chililabombwe Constituency — Matthew Nkoloma Ward</title>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background: #f4f6f9;
-    color: #333;
-    scroll-behavior: smooth;
-  }
-  header {
-    background: #004080;
-    color: white;
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  }
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  nav h1 {
-    font-size: 1.4rem;
-    margin: 0;
-  }
-  nav a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-    position: relative;
-  }
-  nav a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: -3px;
-    left: 0;
-    background: #00bfff;
-    transition: 0.3s;
-  }
-  nav a:hover::after {
-    width: 100%;
-  }
+/* ===== Global Styles ===== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background: #f1f5f9;
+  color: #333;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
 
-  section {
-    padding: 4rem 2rem;
-    max-width: 1000px;
-    margin: auto;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-  }
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ===== Navbar ===== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #008080;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+header:hover { background: #006666; }
+.nav-links { display: flex; gap: 15px; }
+.nav-links a { position: relative; font-weight: 600; padding: 5px; }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  left: 0;
+  bottom: -2px;
+  background: #ff6f61;
+  transition: 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
 
-  h2 {
-    font-size: 2rem;
-    color: #004080;
-    margin-bottom: 1rem;
-    position: relative;
-    display: inline-block;
-  }
-  h2::after {
-    content: '';
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(to right, #00bfff, #004080);
-    display: block;
-    margin-top: 5px;
-    border-radius: 2px;
-  }
+/* ===== Floating Go-to-top Button ===== */
+#topBtn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background: #ff6f61;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: transform 0.3s, background 0.3s;
+}
+#topBtn:hover { background: #ff4b3c; transform: scale(1.1); }
 
-  .values, .tips-grid, .faq-list {
-    display: grid;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .values div, .tips-grid div, .faq-list div {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
+/* ===== Section ===== */
+section {
+  padding: 5rem 2rem 3rem 2rem;
+  max-width: 1000px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+section.visible { opacity: 1; transform: translateY(0); }
 
-  .image-placeholder, .map-placeholder {
-    background: #e0e0e0;
-    border: 2px dashed #004080;
-    border-radius: 10px;
-    height: 250px;
-    margin: 1rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #777;
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
+/* ===== Headings ===== */
+h2 {
+  font-size: 2rem;
+  display: inline-block;
+  position: relative;
+  color: #008080;
+}
+h2::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg,#ff6f61,#ffbc42);
+  border-radius: 2px;
+  margin-top: 5px;
+}
 
-  footer {
-    background: #004080;
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-top: 3rem;
-  }
+/* ===== Tabs ===== */
+.tabs { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.tab { padding: 10px 20px; border-radius: 20px; background: #e0f7f7; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
+.tab.active { background: #ff6f61; color: white; }
+.tab-content { display: none; padding: 1rem 0; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
-  form {
-    display: grid;
-    gap: 1rem;
-    max-width: 600px;
-    margin: auto;
-  }
-  input, textarea, button {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  button {
-    background: #004080;
-    color: white;
-    cursor: pointer;
-    border: none;
-    transition: 0.3s;
-  }
-  button:hover {
-    background: #00bfff;
-  }
+/* ===== Cards ===== */
+.cards { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.card i { color: #008080; margin-right: 8px; }
 
-  @media (max-width: 760px) {
-    nav { justify-content: center; }
-    .values, .tips-grid { grid-template-columns: 1fr; }
-    section { padding: 2rem 1rem; }
-  }
+/* ===== Placeholders ===== */
+.image-placeholder { background: #e0e0e0; border: 2px dashed #008080; border-radius: 12px; height: 250px; display: flex; align-items: center; justify-content: center; color: #777; font-weight: bold; margin: 1rem 0; font-size: 1.1rem; }
+.map-container { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; margin-top: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+/* ===== Footer ===== */
+footer { background: #008080; color: white; text-align: center; padding: 3rem 1rem; margin-top: 3rem; }
+
+/* ===== Responsive ===== */
+@media(max-width:760px) { .nav-links { flex-direction: column; gap: 10px; margin-top: 10px; } }
 </style>
 </head>
 <body>
 
-<!-- Header / Navigation -->
+<!-- Navbar -->
 <header>
-  <nav>
-    <h1>Chililabombwe Constituency — Matthew Nkoloma Ward</h1>
-    <div>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#tips">Tips</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+  <h1>Chililabombwe Constituency — Matthew Nkoloma Ward</h1>
+  <div class="nav-links">
+    <a href="#home"><i class="fas fa-home"></i> Home</a>
+    <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+    <a href="#tips"><i class="fas fa-lightbulb"></i> Tips</a>
+    <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+  </div>
 </header>
 
-<!-- Hero -->
+<!-- Go-to-top Button -->
+<button id="topBtn">&#8679;</button>
+
+<!-- Home Section -->
 <section id="home">
-  <h2>Welcome to Chililabombwe Constituency — Matthew Nkoloma Ward</h2>
+  <h2>Welcome</h2>
   <p>Our ward is dedicated to fostering community spirit, improving living standards, and promoting sustainable local development.</p>
-  <div class="image-placeholder">Hero Image Placeholder</div>
+  <div class="image-placeholder"><i class="fas fa-image"></i> Hero Image</div>
 </section>
 
-<!-- About -->
+<!-- About Section with Tabs -->
 <section id="about">
-  <h2>About Our Ward</h2>
-  <div class="values">
-    <div>
-      <h3>Location & Geography</h3>
-      <p>Chililabombwe (formerly Bancroft) is a mining town in Zambia’s Copperbelt Province, near the DRC border, at 1,360 m above sea level.</p>
-    </div>
-    <div>
-      <h3>Etymology</h3>
-      <p>The name Chililabombwe translates to “place of the croaking frog” in Lamba language.</p>
-    </div>
-    <div>
-      <h3>Population</h3>
-      <p>The town had around 90,530 residents (2010), while the district had ~141,899 residents.</p>
+  <h2>About the Ward</h2>
+  <div class="tabs">
+    <div class="tab active" data-tab="tab1"><i class="fas fa-map-marker-alt"></i> Location & Geography</div>
+    <div class="tab" data-tab="tab2"><i class="fas fa-language"></i> Etymology</div>
+    <div class="tab" data-tab="tab3"><i class="fas fa-users"></i> Population</div>
+  </div>
+  <div class="tab-content" id="tab1" style="display:block;">
+    <p>Chililabombwe (formerly Bancroft) is a mining town in Zambia’s Copperbelt Province, near the DRC border, at 1,360 m above sea level.</p>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12258.972005223064!2d27.848975!3d-12.372275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x196b33b2a20cce87%3A0x0!2sChililabombwe%2C%20Zambia!5e0!3m2!1sen!2s!4v1702656880888!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
-  <div class="image-placeholder">About Image Placeholder</div>
+  <div class="tab-content" id="tab2">
+    <p>The name Chililabombwe translates to “place of the croaking frog” in Lamba language.</p>
+  </div>
+  <div class="tab-content" id="tab3">
+    <p>The town had around 90,530 residents (2010), while the district had ~141,899 residents.</p>
+  </div>
+  <div class="image-placeholder"><i class="fas fa-image"></i> About Image</div>
 </section>
 
-<!-- Tips -->
+<!-- Tips Section -->
 <section id="tips">
   <h2>Community Improvement Tips</h2>
-  <div class="tips-grid">
-    <div>
-      <h3>Environmental Cleanup</h3>
-      <p>Organize cleanups and promote green spaces to keep neighborhoods healthy and attractive.</p>
-    </div>
-    <div>
-      <h3>Community Gardens</h3>
-      <p>Create and maintain gardens to improve aesthetics, food security and biodiversity.</p>
-    </div>
-    <div>
-      <h3>Education Programs</h3>
-      <p>Run workshops and awareness campaigns to empower residents with practical skills and knowledge.</p>
-    </div>
-    <div>
-      <h3>Support Local Businesses</h3>
-      <p>Encourage spending locally and promote entrepreneurship to strengthen the local economy.</p>
-    </div>
+  <div class="cards">
+    <div class="card"><i class="fas fa-recycle"></i><h3>Environmental Cleanup</h3><p>Organize cleanups and promote green spaces.</p></div>
+    <div class="card"><i class="fas fa-seedling"></i><h3>Community Gardens</h3><p>Create and maintain gardens to improve neighborhoods.</p></div>
+    <div class="card"><i class="fas fa-chalkboard-teacher"></i><h3>Education Programs</h3><p>Run workshops and awareness campaigns for residents.</p></div>
+    <div class="card"><i class="fas fa-store"></i><h3>Support Local Businesses</h3><p>Encourage spending locally and promote entrepreneurship.</p></div>
   </div>
-  <div class="image-placeholder">Tips Image Placeholder</div>
+  <div class="image-placeholder"><i class="fas fa-image"></i> Tips Image</div>
 </section>
 
-<!-- FAQ -->
+<!-- FAQ Section -->
 <section id="faq">
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-list">
-    <div><strong>What are the must-visit attractions in Chililabombwe?</strong></div>
-    <div><strong>What is the best time to visit Chililabombwe?</strong></div>
-    <div><strong>Is Chililabombwe safe for visitors?</strong></div>
-    <div><strong>What are the transportation options?</strong></div>
-    <div><strong>What local delicacies should I try?</strong></div>
-    <div><strong>Are there cultural festivals in Chililabombwe?</strong></div>
+  <h2>FAQ</h2>
+  <div class="cards">
+    <div class="card"><i class="fas fa-map-marked-alt"></i><strong>What are the must-visit attractions in Chililabombwe?</strong></div>
+    <div class="card"><i class="fas fa-calendar-alt"></i><strong>What is the best time to visit?</strong></div>
+    <div class="card"><i class="fas fa-shield-alt"></i><strong>Is Chililabombwe safe for visitors?</strong></div>
+    <div class="card"><i class="fas fa-bus"></i><strong>Transportation options?</strong></div>
+    <div class="card"><i class="fas fa-utensils"></i><strong>Local delicacies to try?</strong></div>
+    <div class="card"><i class="fas fa-theater-masks"></i><strong>Cultural festivals in Chililabombwe?</strong></div>
   </div>
-  <div class="map-placeholder">Map Placeholder</div>
 </section>
 
-<!-- Contact -->
+<!-- Contact Section -->
 <section id="contact">
-  <h2>Contact Us</h2>
-  <p><strong>Location:</strong> Chililabombwe</p>
-  <p><strong>Call:</strong> 0963118297</p>
-  <p><strong>Email:</strong> <a href="mailto:sinyinzasalifyanji@gmail.com">sinyinzasalifyanji@gmail.com</a></p>
+  <h2>Contact</h2>
+  <p><i class="fas fa-map-marker-alt"></i> Chililabombwe</p>
+  <p><i class="fas fa-phone"></i> 0963118297</p>
+  <p><i class="fas fa-envelope"></i> <a href="mailto:sinyinzasalifyanji@gmail.com">sinyinzasalifyanji@gmail.com</a></p>
   <form>
     <input type="text" placeholder="Your Name" required>
     <input type="email" placeholder="Your Email" required>
@@ -248,25 +216,41 @@
 <!-- Footer -->
 <footer>
   <p>© <span id="year"></span> Chililabombwe Constituency — Matthew Nkoloma Ward. All Rights Reserved</p>
-  <p>
-    Designed by <strong>SALIFYANJI SINYINZA</strong> | Sin: <strong>1703270539</strong> | Email: <a href="mailto:sinyinzasalifyanji@gmail.com" style="color:white;">sinyinzasalifyanji@gmail.com</a> | Phone: 0963118297 | Location: Chililabombwe
-  </p>
+  <p>Designed by <strong>SALIFYANJI SINYINZA</strong> | Sin: <strong>1703270539</strong> | Email: <a href="mailto:sinyinzasalifyanji@gmail.com" style="color:white;">sinyinzasalifyanji@gmail.com</a> | Phone: 0963118297 | Location: Chililabombwe</p>
 </footer>
 
 <script>
-  // Animate sections on scroll
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
-  sections.forEach(section => observer.observe(section));
+// Animate sections on scroll
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+  });
+},{ threshold: 0.2 });
+sections.forEach(section => observer.observe(section));
 
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Tabs functionality
+const tabs = document.querySelectorAll('.tab');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelector('.tab.active').classList.remove('active');
+    tab.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display='none');
+    document.getElementById(tab.dataset.tab).style.display='block';
+  });
+});
+
+// Go-to-top button
+const topBtn = document.getElementById('topBtn');
+window.onscroll = () => {
+  if(document.body.scrollTop > 300 || document.documentElement.scrollTop > 300){
+    topBtn.style.display='block';
+  } else { topBtn.style.display='none'; }
+};
+topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 </script>
 </body>
 </html>
