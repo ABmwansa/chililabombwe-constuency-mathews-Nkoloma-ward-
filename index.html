@@ -1,195 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lusaka Ward</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background: #004080;
-      color: white;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      color: #004080;
-      margin-bottom: 1rem;
-    }
-    .values, .tips-grid, .faq-list {
-      display: grid;
-      gap: 1rem;
-    }
-    .values div, .tips-grid div, .faq-list div {
-      background: white;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    footer {
-      background: #004080;
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 2rem;
-    }
-    form {
-      display: grid;
-      gap: 1rem;
-      max-width: 600px;
-      margin: auto;
-    }
-    input, textarea, button {
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-    button {
-      background: #004080;
-      color: white;
-      cursor: pointer;
-      border: none;
-    }
-    button:hover {
-      background: #0066cc;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chililabombwe Constituency — Matthew Nkoloma Ward</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: #f4f6f9;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+  header {
+    background: #004080;
+    color: white;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  nav h1 {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+  nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background: #00bfff;
+    transition: 0.3s;
+  }
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  section {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: #004080;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+  }
+  h2::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, #00bfff, #004080);
+    display: block;
+    margin-top: 5px;
+    border-radius: 2px;
+  }
+
+  .values, .tips-grid, .faq-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .values div, .tips-grid div, .faq-list div {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .image-placeholder, .map-placeholder {
+    background: #e0e0e0;
+    border: 2px dashed #004080;
+    border-radius: 10px;
+    height: 250px;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  footer {
+    background: #004080;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+  }
+
+  form {
+    display: grid;
+    gap: 1rem;
+    max-width: 600px;
+    margin: auto;
+  }
+  input, textarea, button {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  button {
+    background: #004080;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+  }
+  button:hover {
+    background: #00bfff;
+  }
+
+  @media (max-width: 760px) {
+    nav { justify-content: center; }
+    .values, .tips-grid { grid-template-columns: 1fr; }
+    section { padding: 2rem 1rem; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- Header / Navigation -->
-  <header>
-    <nav>
-      <h1>Lusaka Ward</h1>
-      <div>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#tips">Tips</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <section id="home">
-    <h2>Welcome to Lusaka Ward</h2>
-    <p>
-      Lusaka Ward is a vibrant community nestled in the heart of [City/Town Name]. 
-      With a rich history and diverse population, our ward is dedicated to fostering 
-      a strong sense of belonging and community spirit.
-    </p>
-    <p>
-      Our ward is known for its commitment to community engagement and sustainable development initiatives. 
-      We believe in empowering our residents to actively participate in shaping the future of our ward.
-    </p>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <h2>About Lusaka Ward</h2>
-    <div class="values">
-      <div>
-        <h3>Healthy Living</h3>
-        <p>We promote healthy living by encouraging regular exercise and nutritious foods.</p>
-      </div>
-      <div>
-        <h3>Community Engagement</h3>
-        <p>Engaging with our community fosters unity and belonging.</p>
-      </div>
-      <div>
-        <h3>Sustainability</h3>
-        <p>We are committed to protecting the environment through sustainable practices.</p>
-      </div>
+<!-- Header / Navigation -->
+<header>
+  <nav>
+    <h1>Chililabombwe Constituency — Matthew Nkoloma Ward</h1>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#tips">Tips</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
     </div>
-  </section>
+  </nav>
+</header>
 
-  <!-- Tips -->
-  <section id="tips">
-    <h2>Community Improvement Tips</h2>
-    <div class="tips-grid">
-      <div>
-        <h3>Environmental Cleanup</h3>
-        <p>Organize cleanups and promote green spaces.</p>
-      </div>
-      <div>
-        <h3>Community Gardens</h3>
-        <p>Create and maintain gardens to enhance neighborhoods.</p>
-      </div>
-      <div>
-        <h3>Education Programs</h3>
-        <p>Empower residents through education and awareness campaigns.</p>
-      </div>
-      <div>
-        <h3>Support Local Businesses</h3>
-        <p>Encourage buying local to strengthen the economy.</p>
-      </div>
+<!-- Hero -->
+<section id="home">
+  <h2>Welcome to Chililabombwe Constituency — Matthew Nkoloma Ward</h2>
+  <p>Our ward is dedicated to fostering community spirit, improving living standards, and promoting sustainable local development.</p>
+  <div class="image-placeholder">Hero Image Placeholder</div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <h2>About Our Ward</h2>
+  <div class="values">
+    <div>
+      <h3>Location & Geography</h3>
+      <p>Chililabombwe (formerly Bancroft) is a mining town in Zambia’s Copperbelt Province, near the DRC border, at 1,360 m above sea level.</p>
     </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-list">
-      <div><strong>What are the must-visit attractions in Lusaka?</strong></div>
-      <div><strong>What is the best time to visit Lusaka?</strong></div>
-      <div><strong>Is Lusaka safe for tourists?</strong></div>
-      <div><strong>What are the transportation options?</strong></div>
-      <div><strong>What local delicacies should I try?</strong></div>
-      <div><strong>Are there cultural festivals in Lusaka?</strong></div>
+    <div>
+      <h3>Etymology</h3>
+      <p>The name Chililabombwe translates to “place of the croaking frog” in Lamba language.</p>
     </div>
-  </section>
+    <div>
+      <h3>Population</h3>
+      <p>The town had around 90,530 residents (2010), while the district had ~141,899 residents.</p>
+    </div>
+  </div>
+  <div class="image-placeholder">About Image Placeholder</div>
+</section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Address:</strong> A108 Adam Street, New York, NY 535022</p>
-    <p><strong>Call:</strong> +1 5589 55488 55 / +1 6678 254445 41</p>
-    <p><strong>Email:</strong> info@example.com / contact@example.com</p>
-    <p><strong>Open Hours:</strong> Monday - Friday, 9:00AM - 05:00PM</p>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <input type="text" placeholder="Subject">
-      <textarea placeholder="Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+<!-- Tips -->
+<section id="tips">
+  <h2>Community Improvement Tips</h2>
+  <div class="tips-grid">
+    <div>
+      <h3>Environmental Cleanup</h3>
+      <p>Organize cleanups and promote green spaces to keep neighborhoods healthy and attractive.</p>
+    </div>
+    <div>
+      <h3>Community Gardens</h3>
+      <p>Create and maintain gardens to improve aesthetics, food security and biodiversity.</p>
+    </div>
+    <div>
+      <h3>Education Programs</h3>
+      <p>Run workshops and awareness campaigns to empower residents with practical skills and knowledge.</p>
+    </div>
+    <div>
+      <h3>Support Local Businesses</h3>
+      <p>Encourage spending locally and promote entrepreneurship to strengthen the local economy.</p>
+    </div>
+  </div>
+  <div class="image-placeholder">Tips Image Placeholder</div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© Copyright. All Rights Reserved</p>
-    <p>Designed by Ingabire Carine | Sin: 19083675 | Email: ingabirecarine403@gmail.com | Program: Bachelors of Architecture | ICUZAMBIA.NET</p>
-  </footer>
+<!-- FAQ -->
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div><strong>What are the must-visit attractions in Chililabombwe?</strong></div>
+    <div><strong>What is the best time to visit Chililabombwe?</strong></div>
+    <div><strong>Is Chililabombwe safe for visitors?</strong></div>
+    <div><strong>What are the transportation options?</strong></div>
+    <div><strong>What local delicacies should I try?</strong></div>
+    <div><strong>Are there cultural festivals in Chililabombwe?</strong></div>
+  </div>
+  <div class="map-placeholder">Map Placeholder</div>
+</section>
 
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p><strong>Location:</strong> Chililabombwe</p>
+  <p><strong>Call:</strong> 0963118297</p>
+  <p><strong>Email:</strong> <a href="mailto:sinyinzasalifyanji@gmail.com">sinyinzasalifyanji@gmail.com</a></p>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <input type="text" placeholder="Subject">
+    <textarea placeholder="Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© <span id="year"></span> Chililabombwe Constituency — Matthew Nkoloma Ward. All Rights Reserved</p>
+  <p>
+    Designed by <strong>SALIFYANJI SINYINZA</strong> | Sin: <strong>1703270539</strong> | Email: <a href="mailto:sinyinzasalifyanji@gmail.com" style="color:white;">sinyinzasalifyanji@gmail.com</a> | Phone: 0963118297 | Location: Chililabombwe
+  </p>
+</footer>
+
+<script>
+  // Animate sections on scroll
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  sections.forEach(section => observer.observe(section));
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
-
