@@ -39,8 +39,19 @@ header {
   gap: 15px;
   padding: 1rem 2rem;
   text-align: center;
+  position: relative;
 }
 .header-top h1 { font-size: 1.6rem; font-weight: 700; color: #008080; }
+
+/* Burger menu */
+.burger {
+  display: none;
+  font-size: 1.8rem;
+  color: #008080;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+}
 .header-nav {
   display: flex;
   justify-content: center;
@@ -185,7 +196,12 @@ img { width: 100%; border-radius: 12px; margin: 1rem 0; }
 footer { background: #008080; color: white; text-align: center; padding: 3rem 1rem; margin-top: 3rem; }
 
 /* ===== Responsive ===== */
-@media(max-width:760px) { .header-nav { flex-direction: column; gap: 10px; } .header-top { flex-direction: column; gap: 10px; } }
+@media(max-width:760px) { 
+  .header-nav { display: none; flex-direction: column; gap: 15px; padding: 1rem; background: #fff; border-top: 2px solid #008080; }
+  .header-nav.active { display: flex; }
+  .burger { display: block; }
+  .header-top { flex-direction: column; gap: 10px; }
+}
 </style>
 </head>
 <body>
@@ -195,8 +211,9 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
   <div class="header-top">
     <i class="fas fa-city fa-2x"></i>
     <h1>Chililabombwe Constituency — Matthew Nkoloma Ward</h1>
+    <div class="burger" id="burger"><i class="fas fa-bars"></i></div>
   </div>
-  <nav class="header-nav">
+  <nav class="header-nav" id="navMenu">
     <a href="#home"><i class="fas fa-home"></i> Home</a>
     <a href="#about"><i class="fas fa-info-circle"></i> About</a>
     <a href="#tips"><i class="fas fa-lightbulb"></i> Tips</a>
@@ -228,17 +245,21 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
     <div class="tab" data-tab="tab3"><i class="fas fa-users"></i> Population</div>
   </div>
   <div class="tab-content" id="tab1" style="display:block;">
-    <p>Chililabombwe (formerly Bancroft) is a mining town in Zambia’s Copperbelt Province, near the DRC border, at 1,360 m above sea level.</p>
+    <p>
+      Chililabombwe (formerly Bancroft) is a historic mining town located in Zambia’s Copperbelt Province, just a few kilometers from the Democratic Republic of Congo border. 
+      The ward lies at 1,360 meters above sea level, offering a cool climate and a diverse landscape of rivers, hills, and fertile land. 
+      This geographical advantage has made Chililabombwe both a hub for copper mining and a place where agriculture and trade flourish side by side.
+    </p>
     <div class="map-container">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12258.972005223064!2d27.848975!3d-12.372275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x196b33b2a20cce87%3A0x0!2sChililabombwe%2C%20Zambia!5e0!3m2!1sen!2s!4v1702656880888!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
   <div class="tab-content" id="tab2">
-    <p>The name Chililabombwe translates to “place of the croaking frog” in Lamba language.</p>
+    <p>The name Chililabombwe translates to “place of the croaking frog” in the Lamba language, reflecting its cultural and environmental roots.</p>
     <img src="assets/image2.png" alt="Etymology Image">
   </div>
   <div class="tab-content" id="tab3">
-    <p>In 2010, the town had ~90,530 residents. Chililabombwe District had 141,899 people.</p>
+    <p>In 2010, the town had approximately 90,530 residents, while the Chililabombwe District recorded a population of 141,899. Today, the ward continues to experience growth driven by mining, trade, and migration.</p>
     <img src="assets/image3.png" alt="Population Image">
   </div>
 </section>
@@ -250,32 +271,55 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
     <div class="card"><i class="fas fa-tree"></i><p>Organize cleanups and promote green spaces.</p><img src="assets/image4.png" alt="Community Image"></div>
     <div class="card"><i class="fas fa-seedling"></i><p>Create and maintain community gardens.</p></div>
     <div class="card"><i class="fas fa-book-open"></i><p>Educate residents through programs.</p></div>
-    <div class="card"><i class="fas fa-hand-holding-usd"></i><p>Support local businesses.</p></div>
+    <div class="card"><i class="fas fa-hand-holding-usd"></i><p>Support local businesses and entrepreneurship.</p></div>
   </div>
 </section>
 
 <!-- Additional Sections with Images -->
 <section id="section1" style="background:white;">
   <h2>Community Projects</h2>
-  <p>Our ward actively participates in initiatives that improve infrastructure, provide clean water, and enhance community well-being.</p>
+  <p>
+    Our ward actively participates in community-driven initiatives that focus on improving infrastructure, 
+    providing safe and clean drinking water, and enhancing the quality of life for every resident. 
+    From road maintenance, drainage systems, and market shelters, to borehole drilling and sanitation programs, 
+    our projects are designed to create sustainable growth and empower the people of Chililabombwe. 
+    We believe that every development, whether small or large, contributes to the overall well-being of our community.
+  </p>
   <img src="assets/image1.png" alt="Community Project">
 </section>
 
 <section id="section2" style="background:white;">
   <h2>Education & Schools</h2>
-  <p>We focus on developing education through quality schools, libraries, and programs that empower our youth.</p>
+  <p>
+    We are committed to strengthening education through the construction and rehabilitation of schools, 
+    libraries, and ICT centers. By providing access to quality learning materials and promoting teacher 
+    training, our ward seeks to ensure that every child has the opportunity to unlock their potential. 
+    Programs such as adult literacy classes and skill development workshops also empower the wider 
+    community to adapt to today’s evolving economy.
+  </p>
   <img src="assets/image2.png" alt="Education">
 </section>
 
 <section id="section3" style="background:white;">
   <h2>Health & Clinics</h2>
-  <p>Healthcare access is crucial. Our ward supports local clinics, vaccination drives, and awareness campaigns.</p>
+  <p>
+    Healthcare access is at the heart of our development agenda. 
+    We continue to support local clinics, maternal health programs, vaccination drives, and community health awareness campaigns. 
+    Our focus is not only on curing illness but also on preventing it through nutrition programs, clean water initiatives, and sanitation projects. 
+    A healthy population is a productive population, and our ward is committed to building a future where no one is left behind.
+  </p>
   <img src="assets/image3.png" alt="Health">
 </section>
 
 <section id="section4" style="background:white;">
   <h2>Recreation & Culture</h2>
-  <p>Promoting arts, sports, and cultural activities for a vibrant and cohesive community life.</p>
+  <p>
+    Culture is the soul of our community. In Chililabombwe, we celebrate diversity through traditional 
+    dances, music festivals, sporting events, and cultural exhibitions. 
+    These activities not only strengthen community identity but also create platforms for young people 
+    to express their creativity and talents. Recreation spaces such as playgrounds and sports fields 
+    encourage unity, wellness, and a vibrant social life across generations.
+  </p>
   <img src="assets/image4.png" alt="Culture">
 </section>
 
@@ -289,7 +333,7 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
     </div>
     <div class="faq-card">
       <div class="faq-question"><span>Is Chililabombwe safe?</span> <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-answer"><p>Yes, standard precautions recommended.</p></div>
+      <div class="faq-answer"><p>Yes, but standard precautions are always recommended.</p></div>
     </div>
     <div class="faq-card">
       <div class="faq-question"><span>Transportation options?</span> <i class="fas fa-chevron-down"></i></div>
@@ -310,70 +354,61 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
 <section id="contact">
   <h2>Contact</h2>
   <div class="contact-cards">
-    <div class="contact-card"><i class="fas fa-map-marker-alt"></i><p>Chililabombwe</p></div>
-    <div class="contact-card"><i class="fas fa-phone"></i><p>0963118297</p></div>
-    <div class="contact-card"><i class="fas fa-envelope"></i><p><a href="mailto:sinyinzasalifyanji@gmail.com">sinyinzasalifyanji@gmail.com</a></p></div>
+    <div class="contact-card"><i class="fas fa-map-marker-alt"></i><p>Chililabombwe Constituency Office</p></div>
+    <div class="contact-card"><i class="fas fa-phone"></i><p>+260 XXX XXX XXX</p></div>
+    <div class="contact-card"><i class="fas fa-envelope"></i><p>info@chililabombwe.gov.zm</p></div>
   </div>
   <form>
     <input type="text" placeholder="Your Name" required>
     <input type="email" placeholder="Your Email" required>
-    <input type="text" placeholder="Subject">
-    <textarea placeholder="Message" rows="5" required></textarea>
+    <textarea rows="5" placeholder="Your Message"></textarea>
     <button type="submit">Send Message</button>
   </form>
 </section>
 
 <!-- Footer -->
 <footer>
-  <p>© <span id="year"></span> Chililabombwe Constituency — Matthew Nkoloma Ward. All Rights Reserved</p>
-  <p>Designed by <strong>SALIFYANJI SINYINZA</strong> | Sin: <strong>1703270539</strong> | Email: <a href="mailto:sinyinzasalifyanji@gmail.com" style="color:white;">sinyinzasalifyanji@gmail.com</a> | Phone: 0963118297 | Location: Chililabombwe</p>
+  <p>&copy; 2025 Chililabombwe Constituency — Matthew Nkoloma Ward. All Rights Reserved.</p>
 </footer>
 
 <script>
-// Animate sections on scroll
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-  });
-},{ threshold: 0.2 });
-sections.forEach(section => observer.observe(section));
+// Go-to-top Button
+const topBtn = document.getElementById('topBtn');
+window.onscroll = function() { topBtn.style.display = (document.documentElement.scrollTop > 200) ? 'block' : 'none'; };
+topBtn.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
 
-// Footer year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Tabs functionality
-const tabs = document.querySelectorAll('.tab');
-tabs.forEach(tab => {
+// Tabs
+document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelector('.tab.active').classList.remove('active');
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
     tab.classList.add('active');
-    document.querySelectorAll('.tab-content').forEach(c => c.style.display='none');
-    document.getElementById(tab.dataset.tab).style.display='block';
+    document.getElementById(tab.dataset.tab).style.display = 'block';
   });
 });
 
-// FAQ accordion
-document.querySelectorAll('.faq-question').forEach(question => {
-  question.addEventListener('click', () => {
-    const answer = question.nextElementSibling;
-    if(answer.style.maxHeight){
-      answer.style.maxHeight = null;
-    } else {
-      document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight=null);
-      answer.style.maxHeight = answer.scrollHeight + "px";
+// FAQ Toggle
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const answer = q.nextElementSibling;
+    const icon = q.querySelector('i');
+    if (answer.style.maxHeight) { 
+      answer.style.maxHeight = null; answer.style.padding = "0 1rem"; icon.classList.remove("fa-chevron-up"); icon.classList.add("fa-chevron-down");
+    } else { 
+      answer.style.maxHeight = answer.scrollHeight + "px"; answer.style.padding = "1rem"; icon.classList.remove("fa-chevron-down"); icon.classList.add("fa-chevron-up");
     }
   });
 });
 
-// Go-to-top button
-const topBtn = document.getElementById('topBtn');
-window.onscroll = () => {
-  if(document.body.scrollTop > 300 || document.documentElement.scrollTop > 300){
-    topBtn.style.display='block';
-  } else { topBtn.style.display='none'; }
-};
-topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+// Animate Sections
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add("visible"); } });
+}, {threshold:0.2});
+sections.forEach(section => observer.observe(section));
+
+// Burger Menu
+document.getElementById("burger").onclick = () => document.getElementById("navMenu").classList.toggle("active");
 </script>
 
 </body>
