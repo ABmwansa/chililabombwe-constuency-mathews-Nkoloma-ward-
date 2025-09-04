@@ -21,35 +21,46 @@ body {
 }
 a { text-decoration: none; color: inherit; }
 
-/* ===== Navbar ===== */
+/* ===== Header ===== */
 header {
-  position: fixed;
-  top: 0;
   width: 100%;
-  background: #008080;
-  color: #fff;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: linear-gradient(90deg, #008080, #00b3b3);
+  color: white;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  padding-bottom: 1rem;
+  position: sticky;
+  top: 0;
   z-index: 1000;
-  transition: background 0.3s ease;
 }
-header:hover { background: #006666; }
-.nav-links { display: flex; gap: 15px; }
-.nav-links a { position: relative; font-weight: 600; padding: 5px; }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 3px;
-  left: 0;
-  bottom: -2px;
-  background: #ff6f61;
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+.header-top h1 { font-size: 1.6rem; font-weight: 700; }
+.header-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0.5rem 0;
+  background: rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.header-nav a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
   transition: 0.3s;
 }
-.nav-links a:hover::after { width: 100%; }
+.header-nav a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
 
 /* ===== Floating Go-to-top Button ===== */
 #topBtn {
@@ -69,7 +80,7 @@ header:hover { background: #006666; }
 }
 #topBtn:hover { background: #ff4b3c; transform: scale(1.1); }
 
-/* ===== Section ===== */
+/* ===== Sections ===== */
 section {
   padding: 5rem 2rem 3rem 2rem;
   max-width: 1000px;
@@ -86,6 +97,7 @@ h2 {
   display: inline-block;
   position: relative;
   color: #008080;
+  margin-bottom: 1rem;
 }
 h2::after {
   content: '';
@@ -115,27 +127,38 @@ h2::after {
 .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 .card i { color: #008080; margin-right: 8px; }
 
-/* ===== FAQ Accordion ===== */
-.accordion { background: white; border-radius: 10px; margin: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
-.accordion-item { border-bottom: 1px solid #ddd; }
-.accordion-item:last-child { border-bottom: none; }
-.accordion-header {
+/* ===== FAQ Cards ===== */
+.faq-cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.faq-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.faq-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.faq-question {
   padding: 1rem;
   cursor: pointer;
   font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #e0f7f7;
   transition: background 0.3s;
 }
-.accordion-header:hover { background: #e0f7f7; }
-.accordion-content {
+.faq-question:hover { background: #b2f0f0; }
+.faq-answer {
   max-height: 0;
   overflow: hidden;
   padding: 0 1rem;
   transition: max-height 0.4s ease, padding 0.4s ease;
 }
-.accordion-content p { margin: 1rem 0; }
+.faq-answer p { margin: 1rem 0; }
 
 /* ===== Contact Section ===== */
 .contact-cards { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 2rem; }
@@ -149,6 +172,7 @@ h2::after {
 }
 .contact-card i { font-size: 2rem; margin-bottom: 10px; color: #ff6f61; }
 .contact-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); background: #f0fcfc; }
+
 form { display: grid; gap: 1rem; max-width: 600px; margin: 2rem auto 0 auto; }
 input, textarea, button { padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
 button { background: #008080; color: white; cursor: pointer; border: none; transition: background 0.3s; }
@@ -162,21 +186,24 @@ button:hover { background: #006666; }
 footer { background: #008080; color: white; text-align: center; padding: 3rem 1rem; margin-top: 3rem; }
 
 /* ===== Responsive ===== */
-@media(max-width:760px) { .nav-links { flex-direction: column; gap: 10px; margin-top: 10px; } }
+@media(max-width:760px) { .header-nav { flex-direction: column; gap: 10px; } .header-top { flex-direction: column; gap: 10px; } }
 </style>
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- Header -->
 <header>
-  <h1>Chililabombwe Constituency — Matthew Nkoloma Ward</h1>
-  <div class="nav-links">
+  <div class="header-top">
+    <i class="fas fa-city fa-2x"></i>
+    <h1>Chililabombwe Constituency — Matthew Nkoloma Ward</h1>
+  </div>
+  <nav class="header-nav">
     <a href="#home"><i class="fas fa-home"></i> Home</a>
     <a href="#about"><i class="fas fa-info-circle"></i> About</a>
     <a href="#tips"><i class="fas fa-lightbulb"></i> Tips</a>
     <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
     <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-  </div>
+  </nav>
 </header>
 
 <!-- Go-to-top Button -->
@@ -200,7 +227,7 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
   <div class="tab-content" id="tab1" style="display:block;">
     <p>Chililabombwe (formerly Bancroft) is a mining town in Zambia’s Copperbelt Province, near the DRC border, at 1,360 m above sea level.</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12258.972005223064!2d27.848975!3d-12.372275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x196b33b2a20cce87%3A0x0!2sChililabombwe%2C%20Zambia!5e0!3m2!1sen!2s!4v1702656880888!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12258.972005223064!2d27.848975!3d-12.372275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x196b33b2a20cce87%3A0x0!2sChililabombwe%2C%20Zambia!5e0!3m2!1sen!2s!4v1702656880888!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
   <div class="tab-content" id="tab2">
@@ -227,30 +254,30 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
 <!-- FAQ Section -->
 <section id="faq">
   <h2>FAQ</h2>
-  <div class="accordion">
-    <div class="accordion-item">
-      <div class="accordion-header"><span>What are the must-visit attractions in Chililabombwe?</span><i class="fas fa-chevron-down"></i></div>
-      <div class="accordion-content"><p>Popular attractions include local mines, community parks, and cultural events.</p></div>
+  <div class="faq-cards">
+    <div class="faq-card">
+      <div class="faq-question"><span>What are the must-visit attractions in Chililabombwe?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer"><p>Popular attractions include local mines, community parks, and cultural events.</p></div>
     </div>
-    <div class="accordion-item">
-      <div class="accordion-header"><span>What is the best time to visit?</span><i class="fas fa-chevron-down"></i></div>
-      <div class="accordion-content"><p>The dry season (May to October) is ideal for visiting.</p></div>
+    <div class="faq-card">
+      <div class="faq-question"><span>What is the best time to visit?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer"><p>The dry season (May to October) is ideal for visiting.</p></div>
     </div>
-    <div class="accordion-item">
-      <div class="accordion-header"><span>Is Chililabombwe safe for visitors?</span><i class="fas fa-chevron-down"></i></div>
-      <div class="accordion-content"><p>Yes, standard precautions are recommended as in any town.</p></div>
+    <div class="faq-card">
+      <div class="faq-question"><span>Is Chililabombwe safe for visitors?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer"><p>Yes, standard precautions are recommended.</p></div>
     </div>
-    <div class="accordion-item">
-      <div class="accordion-header"><span>Transportation options?</span><i class="fas fa-chevron-down"></i></div>
-      <div class="accordion-content"><p>Local buses, taxis, and private transport are available.</p></div>
+    <div class="faq-card">
+      <div class="faq-question"><span>Transportation options?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer"><p>Buses, taxis, and private transport are available.</p></div>
     </div>
-    <div class="accordion-item">
-      <div class="accordion-header"><span>Local delicacies to try?</span><i class="fas fa-chevron-down"></i></div>
-      <div class="accordion-content"><p>Try nshima, fried fish, and local vegetable dishes.</p></div>
+    <div class="faq-card">
+      <div class="faq-question"><span>Local delicacies to try?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer"><p>Try nshima, fried fish, and local vegetable dishes.</p></div>
     </div>
-    <div class="accordion-item">
-      <div class="accordion-header"><span>Cultural festivals in Chililabombwe?</span><i class="fas fa-chevron-down"></i></div>
-      <div class="accordion-content"><p>Festivals include traditional dances, music events, and mining celebrations.</p></div>
+    <div class="faq-card">
+      <div class="faq-question"><span>Cultural festivals in Chililabombwe?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer"><p>Festivals include traditional dances, music events, and mining celebrations.</p></div>
     </div>
   </div>
 </section>
@@ -302,16 +329,15 @@ tabs.forEach(tab => {
   });
 });
 
-// Accordion functionality
-const accordions = document.querySelectorAll('.accordion-header');
-accordions.forEach(header => {
-  header.addEventListener('click', () => {
-    const content = header.nextElementSibling;
-    if(content.style.maxHeight){
-      content.style.maxHeight = null;
+// FAQ accordion functionality
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', () => {
+    const answer = question.nextElementSibling;
+    if(answer.style.maxHeight){
+      answer.style.maxHeight = null;
     } else {
-      document.querySelectorAll('.accordion-content').forEach(c=>c.style.maxHeight=null);
-      content.style.maxHeight = content.scrollHeight + "px";
+      document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight=null);
+      answer.style.maxHeight = answer.scrollHeight + "px";
     }
   });
 });
