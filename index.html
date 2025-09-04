@@ -115,6 +115,45 @@ h2::after {
 .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 .card i { color: #008080; margin-right: 8px; }
 
+/* ===== FAQ Accordion ===== */
+.accordion { background: white; border-radius: 10px; margin: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
+.accordion-item { border-bottom: 1px solid #ddd; }
+.accordion-item:last-child { border-bottom: none; }
+.accordion-header {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+.accordion-header:hover { background: #e0f7f7; }
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1rem;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+.accordion-content p { margin: 1rem 0; }
+
+/* ===== Contact Section ===== */
+.contact-cards { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 2rem; }
+.contact-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.contact-card i { font-size: 2rem; margin-bottom: 10px; color: #ff6f61; }
+.contact-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); background: #f0fcfc; }
+form { display: grid; gap: 1rem; max-width: 600px; margin: 2rem auto 0 auto; }
+input, textarea, button { padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
+button { background: #008080; color: white; cursor: pointer; border: none; transition: background 0.3s; }
+button:hover { background: #006666; }
+
 /* ===== Placeholders ===== */
 .image-placeholder { background: #e0e0e0; border: 2px dashed #008080; border-radius: 12px; height: 250px; display: flex; align-items: center; justify-content: center; color: #777; font-weight: bold; margin: 1rem 0; font-size: 1.1rem; }
 .map-container { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; margin-top: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -188,22 +227,42 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
 <!-- FAQ Section -->
 <section id="faq">
   <h2>FAQ</h2>
-  <div class="cards">
-    <div class="card"><i class="fas fa-map-marked-alt"></i><strong>What are the must-visit attractions in Chililabombwe?</strong></div>
-    <div class="card"><i class="fas fa-calendar-alt"></i><strong>What is the best time to visit?</strong></div>
-    <div class="card"><i class="fas fa-shield-alt"></i><strong>Is Chililabombwe safe for visitors?</strong></div>
-    <div class="card"><i class="fas fa-bus"></i><strong>Transportation options?</strong></div>
-    <div class="card"><i class="fas fa-utensils"></i><strong>Local delicacies to try?</strong></div>
-    <div class="card"><i class="fas fa-theater-masks"></i><strong>Cultural festivals in Chililabombwe?</strong></div>
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header"><span>What are the must-visit attractions in Chililabombwe?</span><i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-content"><p>Popular attractions include local mines, community parks, and cultural events.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header"><span>What is the best time to visit?</span><i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-content"><p>The dry season (May to October) is ideal for visiting.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header"><span>Is Chililabombwe safe for visitors?</span><i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-content"><p>Yes, standard precautions are recommended as in any town.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header"><span>Transportation options?</span><i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-content"><p>Local buses, taxis, and private transport are available.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header"><span>Local delicacies to try?</span><i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-content"><p>Try nshima, fried fish, and local vegetable dishes.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header"><span>Cultural festivals in Chililabombwe?</span><i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-content"><p>Festivals include traditional dances, music events, and mining celebrations.</p></div>
+    </div>
   </div>
 </section>
 
 <!-- Contact Section -->
 <section id="contact">
   <h2>Contact</h2>
-  <p><i class="fas fa-map-marker-alt"></i> Chililabombwe</p>
-  <p><i class="fas fa-phone"></i> 0963118297</p>
-  <p><i class="fas fa-envelope"></i> <a href="mailto:sinyinzasalifyanji@gmail.com">sinyinzasalifyanji@gmail.com</a></p>
+  <div class="contact-cards">
+    <div class="contact-card"><i class="fas fa-map-marker-alt"></i><p>Chililabombwe</p></div>
+    <div class="contact-card"><i class="fas fa-phone"></i><p>0963118297</p></div>
+    <div class="contact-card"><i class="fas fa-envelope"></i><p><a href="mailto:sinyinzasalifyanji@gmail.com">sinyinzasalifyanji@gmail.com</a></p></div>
+  </div>
   <form>
     <input type="text" placeholder="Your Name" required>
     <input type="email" placeholder="Your Email" required>
@@ -240,6 +299,20 @@ tabs.forEach(tab => {
     tab.classList.add('active');
     document.querySelectorAll('.tab-content').forEach(c => c.style.display='none');
     document.getElementById(tab.dataset.tab).style.display='block';
+  });
+});
+
+// Accordion functionality
+const accordions = document.querySelectorAll('.accordion-header');
+accordions.forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    if(content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      document.querySelectorAll('.accordion-content').forEach(c=>c.style.maxHeight=null);
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
   });
 });
 
