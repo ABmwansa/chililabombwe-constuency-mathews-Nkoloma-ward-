@@ -195,7 +195,7 @@ button { background: #008080; color: white; cursor: pointer; border: none; trans
 button:hover { background: #006666; }
 
 /* ===== Images ===== */
-img { width: 60%; border-radius: 12px; margin: 1rem 0; }
+img { width: 40%; border-radius: 12px; margin: 1rem 0; }
 
 /* ===== Footer ===== */
 footer { background: #008080; color: white; text-align: center; padding: 3rem 1rem; margin-top: 3rem; }
@@ -381,7 +381,19 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
 const topBtn = document.getElementById('topBtn');
 window.onscroll = function() { topBtn.style.display = (document.documentElement.scrollTop > 200) ? 'block' : 'none'; };
 topBtn.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+  
+const burger = document.getElementById("burger");
+const navMenu = document.getElementById("navMenu");
 
+// Toggle open/close when burger is clicked
+burger.onclick = () => navMenu.classList.toggle("active");
+
+// Close menu when a nav link is clicked
+document.querySelectorAll("#navMenu a").forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+  });
+});
 // Tabs
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
