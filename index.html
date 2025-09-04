@@ -24,8 +24,8 @@ a { text-decoration: none; color: inherit; }
 /* ===== Header ===== */
 header {
   width: 100%;
-  background: linear-gradient(90deg, #008080, #00b3b3);
-  color: white;
+  background: linear-gradient(90deg, #ffffff, #f0f0f0);
+  color: #008080;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   padding-bottom: 1rem;
   position: sticky;
@@ -40,27 +40,27 @@ header {
   padding: 1rem 2rem;
   text-align: center;
 }
-.header-top h1 { font-size: 1.6rem; font-weight: 700; }
+.header-top h1 { font-size: 1.6rem; font-weight: 700; color: #008080; }
 .header-nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
   padding: 0.5rem 0;
-  background: rgba(255,255,255,0.05);
-  border-top: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,128,128,0.05);
+  border-top: 1px solid rgba(0,128,128,0.2);
 }
 .header-nav a {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
-  color: white;
+  color: #008080;
   font-weight: 600;
   border-radius: 8px;
   transition: 0.3s;
 }
-.header-nav a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+.header-nav a:hover { background: rgba(0,128,128,0.1); transform: translateY(-2px); }
 
 /* ===== Floating Go-to-top Button ===== */
 #topBtn {
@@ -178,9 +178,8 @@ input, textarea, button { padding: 0.8rem; border: 1px solid #ccc; border-radius
 button { background: #008080; color: white; cursor: pointer; border: none; transition: background 0.3s; }
 button:hover { background: #006666; }
 
-/* ===== Placeholders ===== */
-.image-placeholder { background: #e0e0e0; border: 2px dashed #008080; border-radius: 12px; height: 250px; display: flex; align-items: center; justify-content: center; color: #777; font-weight: bold; margin: 1rem 0; font-size: 1.1rem; }
-.map-container { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; margin-top: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+/* ===== Images ===== */
+img { width: 100%; border-radius: 12px; margin: 1rem 0; }
 
 /* ===== Footer ===== */
 footer { background: #008080; color: white; text-align: center; padding: 3rem 1rem; margin-top: 3rem; }
@@ -213,7 +212,7 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
 <section id="home">
   <h2>Welcome</h2>
   <p>Our ward is dedicated to fostering community spirit, improving living standards, and promoting sustainable local development.</p>
-  <div class="image-placeholder"><i class="fas fa-image"></i> Hero Image</div>
+  <img src="assets/image1.png" alt="Hero Image">
 </section>
 
 <!-- About Section with Tabs -->
@@ -227,57 +226,53 @@ footer { background: #008080; color: white; text-align: center; padding: 3rem 1r
   <div class="tab-content" id="tab1" style="display:block;">
     <p>Chililabombwe (formerly Bancroft) is a mining town in Zambia’s Copperbelt Province, near the DRC border, at 1,360 m above sea level.</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12258.972005223064!2d27.848975!3d-12.372275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x196b33b2a20cce87%3A0x0!2sChililabombwe%2C%20Zambia!5e0!3m2!1sen!2s!4v1702656880888!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12258.972005223064!2d27.848975!3d-12.372275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x196b33b2a20cce87%3A0x0!2sChililabombwe%2C%20Zambia!5e0!3m2!1sen!2s!4v1702656880888!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
   <div class="tab-content" id="tab2">
     <p>The name Chililabombwe translates to “place of the croaking frog” in Lamba language.</p>
+    <img src="assets/image2.png" alt="Etymology Image">
   </div>
   <div class="tab-content" id="tab3">
-    <p>The town had around 90,530 residents (2010), while the district had ~141,899 residents.</p>
+    <p>In 2010, the town had ~90,530 residents. Chililabombwe District had 141,899 people.</p>
+    <img src="assets/image3.png" alt="Population Image">
   </div>
-  <div class="image-placeholder"><i class="fas fa-image"></i> About Image</div>
 </section>
 
 <!-- Tips Section -->
 <section id="tips">
   <h2>Community Improvement Tips</h2>
   <div class="cards">
-    <div class="card"><i class="fas fa-recycle"></i><h3>Environmental Cleanup</h3><p>Organize cleanups and promote green spaces.</p></div>
-    <div class="card"><i class="fas fa-seedling"></i><h3>Community Gardens</h3><p>Create and maintain gardens to improve neighborhoods.</p></div>
-    <div class="card"><i class="fas fa-chalkboard-teacher"></i><h3>Education Programs</h3><p>Run workshops and awareness campaigns for residents.</p></div>
-    <div class="card"><i class="fas fa-store"></i><h3>Support Local Businesses</h3><p>Encourage spending locally and promote entrepreneurship.</p></div>
+    <div class="card"><i class="fas fa-tree"></i><p>Organize cleanups and promote green spaces.</p><img src="assets/image4.png" alt="Community Image"></div>
+    <div class="card"><i class="fas fa-seedling"></i><p>Create and maintain community gardens.</p></div>
+    <div class="card"><i class="fas fa-book-open"></i><p>Educate residents through programs.</p></div>
+    <div class="card"><i class="fas fa-hand-holding-usd"></i><p>Support local businesses.</p></div>
   </div>
-  <div class="image-placeholder"><i class="fas fa-image"></i> Tips Image</div>
 </section>
 
 <!-- FAQ Section -->
 <section id="faq">
-  <h2>FAQ</h2>
+  <h2>Frequently Asked Questions</h2>
   <div class="faq-cards">
     <div class="faq-card">
-      <div class="faq-question"><span>What are the must-visit attractions in Chililabombwe?</span> <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-answer"><p>Popular attractions include local mines, community parks, and cultural events.</p></div>
+      <div class="faq-question"><span>Must-visit attractions?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer"><p>Visit mining sites, local parks, and cultural centers.</p></div>
     </div>
     <div class="faq-card">
-      <div class="faq-question"><span>What is the best time to visit?</span> <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-answer"><p>The dry season (May to October) is ideal for visiting.</p></div>
-    </div>
-    <div class="faq-card">
-      <div class="faq-question"><span>Is Chililabombwe safe for visitors?</span> <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-answer"><p>Yes, standard precautions are recommended.</p></div>
+      <div class="faq-question"><span>Is Chililabombwe safe?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer"><p>Yes, standard precautions recommended.</p></div>
     </div>
     <div class="faq-card">
       <div class="faq-question"><span>Transportation options?</span> <i class="fas fa-chevron-down"></i></div>
       <div class="faq-answer"><p>Buses, taxis, and private transport are available.</p></div>
     </div>
     <div class="faq-card">
-      <div class="faq-question"><span>Local delicacies to try?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-question"><span>Local delicacies?</span> <i class="fas fa-chevron-down"></i></div>
       <div class="faq-answer"><p>Try nshima, fried fish, and local vegetable dishes.</p></div>
     </div>
     <div class="faq-card">
-      <div class="faq-question"><span>Cultural festivals in Chililabombwe?</span> <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-answer"><p>Festivals include traditional dances, music events, and mining celebrations.</p></div>
+      <div class="faq-question"><span>Cultural festivals?</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer"><p>Traditional dances, music events, and mining celebrations.</p></div>
     </div>
   </div>
 </section>
@@ -329,7 +324,7 @@ tabs.forEach(tab => {
   });
 });
 
-// FAQ accordion functionality
+// FAQ accordion
 document.querySelectorAll('.faq-question').forEach(question => {
   question.addEventListener('click', () => {
     const answer = question.nextElementSibling;
@@ -351,5 +346,6 @@ window.onscroll = () => {
 };
 topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 </script>
+
 </body>
 </html>
